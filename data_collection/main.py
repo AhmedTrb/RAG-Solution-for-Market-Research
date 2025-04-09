@@ -58,27 +58,54 @@ def extract_product_urls(soup, base_url, config):
 
 def extract_product_details(soup, url, config):
     try:
-        result = {"URL": url}
+        result = {"URL": url, "reviews": []}
+        
+        # Extract regular product fields
         for field_name, field_config in config['fields'].items():
+            if field_name.startswith('review_'):
+                continue  # We'll handle reviews separately
+            
             try:
                 if 'attrs' in field_config:
                     elements = soup.find_all(field_config['selector'], field_config['attrs'])
                 else:
                     elements = soup.select(field_config['selector'])
+                    
                 if elements:
-                    if field_name == 'comment':
-                        raw_text = elements[0].get_text(strip=True) if elements else 'N/A'
-                        result[field_name] = clean_comment(raw_text)
-                    else:
-                        result[field_name] = field_config['processing'](elements[0] if elements else None)
+                    result[field_name] = field_config['processing'](elements[0] if elements else None)
                 else:
                     result[field_name] = config['default_value']
             except Exception as field_error:
-                print(f"Erreur traitement champ {field_name}: {str(field_error)}")
-                result[field_name] = config['default_value']       
+                print(f"Error processing field {field_name}: {str(field_error)}")
+                result[field_name] = config['default_value']
+        
+        # Extract reviews if the config has review selectors
+        if all(key in config['fields'] for key in ['review_title', 'review_date', 'review_text']):
+            titles = soup.find_all(
+                config['fields']['review_title']['selector'],
+                config['fields']['review_title']['attrs']
+            )
+            dates = soup.find_all(
+                config['fields']['review_date']['selector'],
+                config['fields']['review_date']['attrs']
+            )
+            texts = soup.find_all(
+                config['fields']['review_text']['selector'],
+                config['fields']['review_text']['attrs']
+            )
+            
+            # Pair up the reviews (assuming they appear in the same order)
+            for i in range(min(len(titles), len(dates), len(texts))):
+                review = {
+                    'title': clean_comment(config['fields']['review_title']['processing'](titles[i])),
+                    'date': clean_comment(config['fields']['review_date']['processing'](dates[i])),
+                    'comment': clean_comment(config['fields']['review_text']['processing'](texts[i]))
+                }
+                result['reviews'].append(review)
+        
         return result
     except Exception as e:
-        print(f"Erreur extraction détails produit: {str(e)}")
+        print(f"Error extracting product details: {str(e)}")
         return None
     
 def get_next_page_url(soup, base_url, config):

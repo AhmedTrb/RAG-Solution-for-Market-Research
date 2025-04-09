@@ -1,6 +1,6 @@
 configurations = {
     'amazon': {
-        'MAX_PAGES': 10,
+        'MAX_PAGES': 1,
         'base_url': "https://www.amazon.com",
         'start_url': "https://www.amazon.com/s?k={query}",
         
@@ -40,11 +40,21 @@ configurations = {
                     'selector': 'span#acrCustomerReviewText',
                     'processing': lambda x: x.text.split()[0] if x else 'N/A'
                 },
-                'comment': {
-                    'selector': 'div',
-                    'attrs': {'class': 'a-expander-content reviewText review-text-content a-expander-partial-collapse-content'},
-                    'processing': lambda x: x.text.strip()
-                }
+                'review_title': {
+                'selector': 'a',
+                'attrs': {'data-hook': 'review-title'},
+                'processing': lambda x: x.text if x else 'N/A'
+            },
+            'review_date': {
+                'selector': 'span',
+                'attrs': {'data-hook': 'review-date'},
+                'processing': lambda x: x.text if x else 'N/A'
+            },
+            'review_text': {
+                'selector': 'span',
+                'attrs': {'data-hook': 'review-body'},
+                'processing': lambda x: x.text if x else 'N/A'
+            }
             },
             'default_value': 'N/A'
         },
@@ -59,7 +69,7 @@ configurations = {
     },
 
     'bestbuytunisie': {
-        'MAX_PAGES': 10,
+        'MAX_PAGES': 1,
         'base_url': "https://bestbuytunisie.tn",
         'start_url': "https://bestbuytunisie.tn/?s={query}",
         
@@ -105,7 +115,7 @@ configurations = {
     },
 
     'ebay': {
-        'MAX_PAGES': 10,
+        'MAX_PAGES': 1,
         'base_url': "https://www.ebay.fr",
         'start_url': "https://www.ebay.fr/sch/353/bn_16573761/i.html?_nkw={query}",
 
@@ -162,7 +172,7 @@ configurations = {
     },
 
     'newegg': {
-        'MAX_PAGES': 10,
+        'MAX_PAGES': 1,
         
 
         'base_url': "https://www.newegg.com/",
