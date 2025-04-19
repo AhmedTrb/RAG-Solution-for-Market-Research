@@ -177,7 +177,9 @@ def scrape_all_websites(query):
     for platform in configurations.keys():
         platform_data = scrape_website(platform, query)
         all_data[platform] = platform_data
-    
+    empty = {"amazon": [],"bestbuytunisie": [],"ebay": [],"newegg": []}
+    if all_data ==empty:
+        return None
     # Sauvegarde combinée
     combined_filename = f"all_products_{query.replace(' ', '_')}.json"
     with open(combined_filename, 'w', encoding='utf-8') as f:
@@ -185,16 +187,55 @@ def scrape_all_websites(query):
     print(f"\nToutes les données sauvegardées dans {combined_filename}")
 
 def main():
-    parser = argparse.ArgumentParser(description='Scraper e-commerce')
-    parser.add_argument('--query', type=str, required=True, help='Terme de recherche')
-    args = parser.parse_args()
+    queries = [
+    # Ring Products
+    "Ring Indoor Cam (2nd Gen)",
+    "Ring Stick Up Cam Battery",
+    "Ring Stick Up Cam Plug-In",
+    "Ring Stick Up Cam Pro",
+    "Ring Spotlight Cam Plus",
+    "Ring Spotlight Cam Pro",
+    "Ring Floodlight Cam Plus",
+    "Ring Floodlight Cam Pro",
+    "Ring Pan-Tilt Indoor Cam",
+
+    # Google Nest Products
+    "Google Nest Cam (Battery)",
+    "Google Nest Cam (Wired)",
+    "Google Nest Cam with Floodlight",
+
+    # Wyze Products
+    "Wyze Cam v3",
+    "Wyze Cam v3 Pro",
+    "Wyze Cam v4",
+    "Wyze Cam Pan v3",
+    "Wyze Cam OG",
+    "Wyze Cam Floodlight",
+    "Wyze Cam Floodlight v2",
+    "Wyze Cam Floodlight Pro",
+    "Wyze Video Doorbell v2",
+    "Wyze Video Doorbell Pro",
+
+    # Eufy Products
+    "eufy SoloCam S340",
+    "eufy SoloCam S220",
+    "eufy SoloCam E30",
+    "eufyCam 3",
+    "eufyCam 3C",
+    "eufyCam S330",
+    "eufyCam 2C",
+    "eufyCam 2C Pro",
+    "eufy Security Indoor Cam E220",
+    "eufy Security Indoor Cam C220",
+    "eufy Security Indoor Cam C210",
+    "eufy Security Indoor Cam S350",
+    "eufy Security Indoor Cam 2K Pan & Tilt",
+    "eufy Video Doorbell E340",
+]
     
-    if not args.query:
-        print("Veuillez spécifier une requête avec --query")
-        return
-    
-    print(f"\nLancement du scraping pour: '{args.query}'")
-    scrape_all_websites(args.query)
+    print(f"\nLancement du scraping pour: '{queries}'")
+    for q in queries:
+        scrape_all_websites(q)
 
 if __name__ == "__main__":
     main()

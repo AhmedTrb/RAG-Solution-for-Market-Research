@@ -69,7 +69,7 @@ configurations = {
     },
 
     'bestbuytunisie': {
-        'MAX_PAGES': 1,
+        'MAX_PAGES': 0,
         'base_url': "https://bestbuytunisie.tn",
         'start_url': "https://bestbuytunisie.tn/?s={query}",
         
@@ -115,7 +115,7 @@ configurations = {
     },
 
     'ebay': {
-        'MAX_PAGES': 1,
+        'MAX_PAGES': 0,
         'base_url': "https://www.ebay.fr",
         'start_url': "https://www.ebay.fr/sch/353/bn_16573761/i.html?_nkw={query}",
 
@@ -172,7 +172,7 @@ configurations = {
     },
 
     'newegg': {
-        'MAX_PAGES': 1,
+        'MAX_PAGES': 0,
         
 
         'base_url': "https://www.newegg.com/",
