@@ -47,12 +47,12 @@ const LandingPage: React.FC = () => {
               </p>
               <div className="flex space-x-4 pt-4">
                 <Link to="/dashboard">
-                  <Button size="lg" variant="primary" className="bg-white text-blue-700 hover:bg-blue-50">
+                  <Button size="lg" variant="primary">
                     Get Started
                   </Button>
                 </Link>
                 <Link to="/auth">
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-800">
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-blue-800 hover:text-blue-800">
                     Sign In
                   </Button>
                 </Link>

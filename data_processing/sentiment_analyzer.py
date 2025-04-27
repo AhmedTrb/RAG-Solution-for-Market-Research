@@ -1,4 +1,3 @@
-
 import logging
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from typing import Dict

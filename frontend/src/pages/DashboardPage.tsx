@@ -7,10 +7,13 @@ import ReportDisplay from '../components/dashboard/ReportDisplay';
 import { Report } from '../types';
 import { generateReport, getReportById } from '../services/api';
 import { saveSearch } from '../services/history';
+import { fetchResearchReport } from '../services/ResearchService';
 
 const DashboardPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [report, setReport] = useState<Report | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  //const [loading, setLoading] = useState(false);
   const [searchParams] = useSearchParams();
   const reportId = searchParams.get('reportId');
 
@@ -32,26 +35,42 @@ const DashboardPage: React.FC = () => {
     }
   }, [reportId]);
 
-  const handleQuerySubmit = async (query: string, filters: QueryFilters) => {
+  const handleFetchReport = async () => {
     setIsLoading(true);
+    setError(null);
+
     try {
-      // Generate report
-      const reportData = await generateReport(query);
-      setReport(reportData);
-      
-      // Save to search history with a generated report ID
-      const reportIdForHistory = query.toLowerCase().includes('airpod') 
-        ? 'airpods' 
-        : 'default';
-      
-      await saveSearch(query, reportIdForHistory);
-    } catch (error) {
-      console.error('Error:', error);
-      // Handle error
+      const data = await fetchResearchReport({
+        query: "What are the main complaints about battery life for Arlo cameras?",
+        retrieval_method: "similarity",
+      });
+      setReport(data);
+    } catch (err) {
+      setError('Failed to fetch research report.');
     } finally {
       setIsLoading(false);
     }
   };
+  // const handleQuerySubmit = async (query: string, filters: QueryFilters) => {
+  //   setIsLoading(true);
+  //   try {
+  //     // Generate report
+  //     const reportData = await generateReport(query);
+  //     setReport(reportData);
+      
+  //     // Save to search history with a generated report ID
+  //     const reportIdForHistory = query.toLowerCase().includes('airpod') 
+  //       ? 'airpods' 
+  //       : 'default';
+      
+  //     await saveSearch(query, reportIdForHistory);
+  //   } catch (error) {
+  //     console.error('Error:', error);
+  //     // Handle error
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -68,7 +87,7 @@ const DashboardPage: React.FC = () => {
           
           <div className="grid grid-cols-1 gap-8">
             <div className="bg-white shadow rounded-lg p-6">
-              <QueryForm onSubmit={handleQuerySubmit} isLoading={isLoading} />
+              <QueryForm onSubmit={handleFetchReport} isLoading={isLoading} />
             </div>
             
             {isLoading && (
@@ -76,7 +95,12 @@ const DashboardPage: React.FC = () => {
                 <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-500"></div>
               </div>
             )}
-            
+            {error && (
+              <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                <strong className="font-bold">Error!</strong>
+                <span className="block sm:inline">{error}</span>
+              </div>
+            )}
             {!isLoading && report && (
               <div className="bg-white shadow rounded-lg p-6">
                 <ReportDisplay report={report} />

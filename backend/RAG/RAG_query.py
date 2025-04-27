@@ -94,7 +94,7 @@ print("\nRAG chain created successfully.")
 # --- Example Usage ---
 if __name__ == "__main__":
     # Example questions:
-    query1 = "Analyze discussions from the past 6 months across Amazon reviews, Reddit, Twitter, and tech review sites regarding Ring, Google Nest Cam, Wyze Cam, and Eufy security cameras. Synthesize the primary user concerns related to data privacy and security vulnerabilities for each brand. Additionally, evaluate user sentiment towards the necessity and cost of each brand's subscription plan (e.g., Ring Protect, Nest Aware). Identify which features users most frequently mention as being locked behind paywalls and the reaction to this."
+    query1 = "Analyze discussions from the past 6 months across Amazon reviews, Reddit, and tech review sites regarding Ring, Google Nest Cam, Wyze Cam, and Eufy security cameras. Synthesize the primary user concerns related to data privacy and security vulnerabilities for each brand. Additionally, evaluate user sentiment towards the necessity and cost of each brand's subscription plan (e.g., Ring Protect, Nest Aware). Identify which features users most frequently mention as being locked behind paywalls and the reaction to this."
 
     print(f"\nQuery 1: {query1}")
     response1 = rag_chain.invoke(query1)

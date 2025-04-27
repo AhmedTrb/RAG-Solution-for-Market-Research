@@ -1,6 +1,6 @@
 import logging
 import nltk
-from data_processor import DataProcessor # Import the updated DataProcessor
+from data_processor import DataProcessor 
 import json
 import os
 import pandas as pd
@@ -22,7 +22,7 @@ except Exception as e:
 
 
 # --- Configuration ---
-JSON_DIRECTORY = "." # Directory where your JSON files are located
+JSON_DIRECTORY = "./data/" # Directory where your JSON files are located
 AMAZON_JSON_FILENAMES = [
     "all_products_eufyCam_2C_Pro.json",
     "all_products_eufyCam_2C.json",

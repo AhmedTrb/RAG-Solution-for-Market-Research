@@ -1,6 +1,15 @@
+export interface AspectSentiment {
+  aspect: string;
+  negative_count: string;
+  neutral_count: string;
+  positive_count: string;
+  summary: string;
+  total_mentions: string;
+}
+
 export interface Metric {
   title: string;
-  value: string;
+  value: string | number;
   description: string;
 }
 
@@ -12,10 +21,13 @@ export interface Sentiment {
 }
 
 export interface Report {
-  report: string;
-  metrics: Metric[];
-  sentiments: Sentiment;
+  aspect_sentiments_aggregated: AspectSentiment[];
   key_themes: string[];
+  metrics: Metric[];
+  report: string;
+  retrieval_method_used: string;
+  retrieved_document_count: number;
+  sentiments: Sentiment;
 }
 
 export interface User {

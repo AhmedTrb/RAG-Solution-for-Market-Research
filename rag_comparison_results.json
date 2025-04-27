@@ -1,0 +1,181 @@
+{
+  "similarity": {
+    "report": "The user feedback for the Arlo Essential Security Camera is overwhelmingly positive, with users frequently praising both the battery life and video quality. Key takeaways include:\n\n*   **Battery Life:** Users highlight the long-lasting battery, with some mentioning it lasts for a month on a single charge. This reduces the hassle of frequent recharging.\n*   **Video Quality:** The video quality is consistently described as \"clear,\" \"sharp,\" and \"high resolution.\" Users appreciate the color night vision and the ability to capture details day and night.\n*   **Overall:** The camera is considered an excellent choice for home security due to its wireless design, ease of use, and reliable performance.",
+    "metrics": [
+      {
+        "title": "Average Rating",
+        "value": 5.0,
+        "description": "The average rating across all provided reviews is 5.0 stars."
+      }
+    ],
+    "sentiments": {
+      "description": "All provided reviews express a positive sentiment towards the Arlo Essential Security Camera.",
+      "positive": 7,
+      "neutral": 0,
+      "negative": 0
+    },
+    "key_themes": [
+      "Battery Life",
+      "Video Quality",
+      "Ease of Use",
+      "Wireless Design",
+      "Home Security"
+    ],
+    "aspect_sentiments_aggregated": [
+      {
+        "aspect": "Battery Life",
+        "positive_count": 5,
+        "neutral_count": 0,
+        "negative_count": 0,
+        "total_mentions": 5,
+        "summary": "Users consistently praise the long battery life, highlighting its convenience and reducing the need for frequent recharging."
+      },
+      {
+        "aspect": "Video Quality",
+        "positive_count": 7,
+        "neutral_count": 0,
+        "negative_count": 0,
+        "total_mentions": 7,
+        "summary": "The video quality is highly rated, with users describing it as clear, sharp, and high-definition, especially appreciating the color night vision."
+      }
+    ],
+    "retrieval_method_used": "similarity",
+    "retrieved_document_count": 1
+  },
+  "similarity_filter_positive": {
+    "report": "The user feedback for the Arlo Essential Security Camera is overwhelmingly positive, with users frequently praising both the battery life and video quality. Key takeaways include:\n\n*   **Battery Life:** Users highlight the long-lasting battery as a significant advantage, reducing the need for frequent recharging. Some describe it as a \"game changer.\" One user mentioned the battery lasts a month.\n*   **Video Quality:** The video quality is consistently described as \"clear,\" \"sharp,\" and \"high resolution.\" Users appreciate the color night vision and the ability to capture details both day and night. The HDR video resolution is also noted as providing crystal clear visuals.\n*   **Overall:** The camera is considered an excellent choice for home security due to its features, ease of use, and reliability.",
+    "metrics": [
+      {
+        "title": "Average Rating",
+        "value": 5.0,
+        "description": "The average rating across all provided reviews is 5.0 stars."
+      }
+    ],
+    "sentiments": {
+      "description": "All provided reviews express positive sentiment towards the Arlo Essential Security Camera.",
+      "positive": 7,
+      "neutral": 0,
+      "negative": 0
+    },
+    "key_themes": [
+      "Battery Life",
+      "Video Quality",
+      "Ease of Use",
+      "Wireless Design",
+      "Home Security"
+    ],
+    "aspect_sentiments_aggregated": [
+      {
+        "aspect": "Battery Life",
+        "positive_count": 5,
+        "neutral_count": 0,
+        "negative_count": 0,
+        "total_mentions": 5,
+        "summary": "Users are highly satisfied with the long battery life of the Arlo Essential Security Camera, highlighting it as a key benefit."
+      },
+      {
+        "aspect": "Video Quality",
+        "positive_count": 7,
+        "neutral_count": 0,
+        "negative_count": 0,
+        "total_mentions": 7,
+        "summary": "The video quality, including clarity, sharpness, and night vision capabilities, receives consistently positive feedback."
+      }
+    ],
+    "retrieval_method_used": "similarity_filter_positive",
+    "retrieved_document_count": 1
+  },
+  "similarity_filter_negative": {
+    "report": "The user feedback regarding the Arlo Essential Security Camera reveals concerns about battery life and video quality, among other issues. Key takeaways include:\n\n*   **Battery Life:** One user explicitly mentions that false alarms from the Arlo system drain the camera's battery life, necessitating the purchase of solar panels.\n*   **Video Quality:** One user mentions inconsistent video quality and bad zoom. Another user reports that the camera's video is easy to destroy.\n*   **Connectivity Issues:** A recurring theme is connectivity problems, with cameras frequently disconnecting and requiring troubleshooting.\n*   **False Alarms:** The system generates numerous false alarms, triggered by animals and other non-threatening events.\n*   **Customer Support:** Negative experiences with customer support are highlighted, including long wait times and unhelpful solutions.",
+    "metrics": [
+      {
+        "title": "Total Documents",
+        "value": 7,
+        "description": "Total number of documents analyzed."
+      }
+    ],
+    "sentiments": {
+      "description": "The overall sentiment leans negative, based on the 'Overall Sentiment' metadata.",
+      "positive": 0,
+      "neutral": 0,
+      "negative": 7
+    },
+    "key_themes": [
+      "Battery Life",
+      "Video Quality",
+      "Connectivity Issues",
+      "False Alarms",
+      "Customer Support"
+    ],
+    "aspect_sentiments_aggregated": [
+      {
+        "aspect": "Battery Life",
+        "positive_count": 0,
+        "neutral_count": 0,
+        "negative_count": 1,
+        "total_mentions": 1,
+        "summary": "Battery life is negatively impacted by false alarms, requiring additional purchases like solar panels."
+      },
+      {
+        "aspect": "Video Quality",
+        "positive_count": 1,
+        "neutral_count": 0,
+        "negative_count": 2,
+        "total_mentions": 3,
+        "summary": "Video quality is inconsistent, zoom is bad, and video can be easily destroyed."
+      }
+    ],
+    "retrieval_method_used": "similarity_filter_negative",
+    "retrieved_document_count": 1
+  },
+  "hybrid_similarity_keyword": {
+    "report": "The user feedback for the Arlo Essential Security Camera is overwhelmingly positive, with users frequently praising both the battery life and video quality. Key takeaways include:\n\n*   **Battery Life:** Users highlight the long-lasting battery as a significant advantage, reducing the need for frequent recharging. Some describe it as a \"game changer.\" The Arlo Essential XL model is specifically mentioned for its extended battery life.\n*   **Video Quality:** The video quality is consistently described as \"clear,\" \"sharp,\" and \"high resolution.\" Users appreciate the color night vision and the ability to capture details both day and night. The HDR video resolution is also noted as providing crystal clear visuals.\n*   **Other Features:** Beyond battery and video, users also appreciate the easy setup, wireless design, reliable motion detection, clear two-way audio, and weather resistance.",
+    "metrics": [
+      {
+        "title": "Average Rating",
+        "value": 5.0,
+        "description": "The average rating across all provided reviews is 5.0 stars."
+      },
+      {
+        "title": "Number of Reviews",
+        "value": 7,
+        "description": "Total number of customer reviews analyzed."
+      }
+    ],
+    "sentiments": {
+      "description": "All reviews analyzed express positive sentiment towards the Arlo Essential Security Camera.",
+      "positive": 7,
+      "neutral": 0,
+      "negative": 0
+    },
+    "key_themes": [
+      "Battery Life",
+      "Video Quality",
+      "Easy Setup",
+      "Wireless Design",
+      "Motion Detection",
+      "Two-Way Audio",
+      "Weather Resistance"
+    ],
+    "aspect_sentiments_aggregated": [
+      {
+        "aspect": "Battery Life",
+        "positive_count": 5,
+        "neutral_count": 0,
+        "negative_count": 0,
+        "total_mentions": 5,
+        "summary": "Users consistently praise the long battery life, especially the extended battery life of the Arlo Essential XL model. It is considered a significant advantage, reducing the hassle of frequent recharging."
+      },
+      {
+        "aspect": "Video Quality",
+        "positive_count": 7,
+        "neutral_count": 0,
+        "negative_count": 0,
+        "total_mentions": 7,
+        "summary": "The video quality is consistently described as clear, sharp, and high resolution, with users appreciating the color night vision and the ability to capture details both day and night."
+      }
+    ],
+    "retrieval_method_used": "hybrid_similarity_keyword",
+    "retrieved_document_count": 7
+  }
+}

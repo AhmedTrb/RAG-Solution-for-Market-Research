@@ -6,7 +6,6 @@ interface SentimentChartProps {
 }
 
 const SentimentChart: React.FC<SentimentChartProps> = ({ sentiment }) => {
-  // Convert string values to numbers if they're percentages or strings
   const positive = typeof sentiment.positive === 'string' 
     ? parseFloat(sentiment.positive) 
     : sentiment.positive;
@@ -19,7 +18,6 @@ const SentimentChart: React.FC<SentimentChartProps> = ({ sentiment }) => {
     ? parseFloat(sentiment.negative) 
     : sentiment.negative;
 
-  // Calculate percentages if the values are counts
   const total = positive + neutral + negative;
   const positivePercent = total > 0 ? (positive / total) * 100 : 0;
   const neutralPercent = total > 0 ? (neutral / total) * 100 : 0;
@@ -52,6 +50,7 @@ const SentimentChart: React.FC<SentimentChartProps> = ({ sentiment }) => {
             <span className="text-sm font-medium text-gray-900">Positive</span>
           </div>
           <p className="text-lg font-bold text-gray-900">{positivePercent.toFixed(1)}%</p>
+          <p className="text-sm text-gray-500">({positive})</p>
         </div>
         <div className="space-y-1">
           <div className="flex items-center justify-center">
@@ -59,6 +58,7 @@ const SentimentChart: React.FC<SentimentChartProps> = ({ sentiment }) => {
             <span className="text-sm font-medium text-gray-900">Neutral</span>
           </div>
           <p className="text-lg font-bold text-gray-900">{neutralPercent.toFixed(1)}%</p>
+          <p className="text-sm text-gray-500">({neutral})</p>
         </div>
         <div className="space-y-1">
           <div className="flex items-center justify-center">
@@ -66,6 +66,7 @@ const SentimentChart: React.FC<SentimentChartProps> = ({ sentiment }) => {
             <span className="text-sm font-medium text-gray-900">Negative</span>
           </div>
           <p className="text-lg font-bold text-gray-900">{negativePercent.toFixed(1)}%</p>
+          <p className="text-sm text-gray-500">({negative})</p>
         </div>
       </div>
     </div>
