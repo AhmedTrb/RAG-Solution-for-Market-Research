@@ -6,7 +6,7 @@ import MetricsPanel from './MetricsPanel';
 import ThemesList from './ThemesList';
 import { FileDown, Copy, Share2 } from 'lucide-react';
 import Button from '../common/Button';
-
+import ReactMarkdown from 'react-markdown';
 interface ReportDisplayProps {
   report: Report | null;
 }
@@ -89,10 +89,11 @@ const ReportDisplay: React.FC<ReportDisplayProps> = ({ report }) => {
       </div>
 
       <Card className="prose max-w-none">
-        <div>{formatReportText(report.report)}</div>
+        <ReactMarkdown>{report.report}</ReactMarkdown>
       </Card>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 ">
         <Card className="lg:col-span-1">
           <SentimentChart sentiment={report.sentiments} />
         </Card>
@@ -100,7 +101,7 @@ const ReportDisplay: React.FC<ReportDisplayProps> = ({ report }) => {
           <div className="space-y-6">
             <ThemesList themes={report.key_themes} />
             {Array.isArray(report?.aspect_sentiments_aggregated) && report.aspect_sentiments_aggregated.length > 0 && (
-              <div className="mt-6">
+              <div className="mt-6 max-h-64 overflow-y-scroll">
                 <h3 className="text-lg font-medium text-gray-900 mb-4">Aspect-Based Sentiment Analysis</h3>
                 <div className="space-y-4">
                   {report.aspect_sentiments_aggregated.map((aspect, index) => (

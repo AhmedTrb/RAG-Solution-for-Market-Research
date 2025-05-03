@@ -141,6 +141,7 @@ const AuthPage: React.FC = () => {
               <Button
                 type="submit"
                 variant="primary"
+                className='text-white hover:bg-blue-800 hover:text-blue-800'
                 fullWidth
                 size="lg"
                 isLoading={isLoading}

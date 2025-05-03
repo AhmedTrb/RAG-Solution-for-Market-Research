@@ -91,7 +91,7 @@ def generate_research_report():
     data = request.get_json()
     query = data.get('query')
     # Get retrieval method from request, default to similarity
-    retrieval_method = data.get('retrieval_method', 'similarity')
+    retrieval_method = data.get('retrieval_method')
 
     if not query or not isinstance(query, str):
         return jsonify({"error": "Missing or invalid 'query' parameter"}), 400

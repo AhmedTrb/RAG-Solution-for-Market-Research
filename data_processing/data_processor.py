@@ -650,7 +650,7 @@ class DataProcessor:
                 'entities': analysis_result.get('entities', {}), # Dictionary of lists
                 'aspect_sentiments': analysis_result.get('aspect_sentiments', []), # List of dicts
 
-                # Corpus features (will be None if not calculated)
+                # Corpus features 
                 'tfidf_features': analysis_result.get('tfidf_features'), # List of (term, score) tuples
                 'lda_dominant_topic': analysis_result.get('lda_dominant_topic'), # Dominant topic index (int)
                 'lda_dominant_topic_prob': analysis_result.get('lda_dominant_topic_prob'), # Dominant topic probability (float)

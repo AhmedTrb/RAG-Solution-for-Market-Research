@@ -3,17 +3,11 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 from typing import List, Dict, Any, Optional
 import logging
 import json # Needed for potential complex results (though less likely now)
-
-# --- Hugging Face Imports (Conceptual - REMOVED) ---
-# Removed imports for transformers and deep learning frameworks
-
 # Set up logging for this module
 logger = logging.getLogger(__name__)
 
 # --- SpaCy Model Loading ---
 # Load spaCy model once when the module is imported.
-# This is more efficient than loading it in the class constructor every time.
-# Ensure you have run: python -m spacy download en_core_web_sm
 try:
     # Using 'en_core_web_sm'.
     # Consider 'en_core_web_md' or 'en_core_web_lg' for potentially better parsing if resources allow.

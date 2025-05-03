@@ -35,14 +35,14 @@ const DashboardPage: React.FC = () => {
     }
   }, [reportId]);
 
-  const handleFetchReport = async () => {
+  const handleFetchReport = async (query:string,retrieval_method:string) => {
     setIsLoading(true);
     setError(null);
 
     try {
       const data = await fetchResearchReport({
-        query: "What are the main complaints about battery life for Arlo cameras?",
-        retrieval_method: "similarity",
+        query: query,
+        retrieval_method: retrieval_method,
       });
       setReport(data);
     } catch (err) {

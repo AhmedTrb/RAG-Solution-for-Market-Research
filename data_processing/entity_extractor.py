@@ -94,33 +94,3 @@ class EntityExtractor:
             entities[entity_type] = list(dict.fromkeys([e for e in entities[entity_type] if e and isinstance(e, str)]))
 
         return entities
-
-    # The extract_product_mentions method is largely redundant now that extract_entities handles keywords.
-    # We can keep it if there are specific patterns *beyond* simple keywords,
-    # but the current implementation primarily relies on the same keyword matching.
-    # Let's merge its logic into extract_entities or simplify it.
-    # For simplicity and better integration, let's remove the separate method
-    # and ensure extract_entities covers the needed mention logic.
-    # If complex regex patterns are still needed, they can be added to extract_entities.
-
-    # Keep extract_product_mentions only if it adds distinct logic (e.g., regex like "my new (\w+)")
-    # If the regex patterns like "my new (\w+)" are valuable, they should be moved into
-    # extract_entities or called separately and merged.
-    # For now, let's assume extract_entities is the primary method and simplify.
-    # If you need the regex patterns, we can reintegrate them into extract_entities.
-
-    # Example of integrating the regex patterns into extract_entities:
-    # Add this block within extract_entities, before removing duplicates:
-    # product_prefixes = [
-    #      r'my new (\w+)', r'just bought (?:a|an) (\w+)', r'purchased (?:a|an) (\w+)',
-    #      r'ordered (?:a|an) (\w+)', r'got (?:a|an) (\w+)', r'using (?:a|an) (\w+)',
-    #      r'reviewed? (?:a|an) (\w+)', r'trying? (?:a|an) (\w+)',
-    #      r'love (?:my|this) (\w+)', r'hate (?:my|this) (\w+)'
-    # ]
-    # for prefix in product_prefixes:
-    #     matches = re.findall(prefix, text, re.IGNORECASE)
-    #     entities['PRODUCT'].extend(matches)
-    # This would make extract_product_mentions obsolete.
-    # Let's proceed assuming we consolidate this logic into extract_entities.
-
-# Removed the redundant extract_product_mentions method from the class

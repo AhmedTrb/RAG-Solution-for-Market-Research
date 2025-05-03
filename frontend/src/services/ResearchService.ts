@@ -5,7 +5,7 @@ const baseUrl = "http://localhost:5000"; // Or however you handle envs
 
 interface ResearchRequest {
   query: string;
-  retrieval_method: 'similarity' ;
+  retrieval_method: string ;
 }
 
 export async function fetchResearchReport(payload: ResearchRequest): Promise<Report> {

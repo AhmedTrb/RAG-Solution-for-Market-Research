@@ -6,7 +6,7 @@ import Select from '../common/Select';
 import Input from '../common/Input';
 
 interface QueryFormProps {
-  onSubmit: (query: string, filters: QueryFilters) => void;
+  onSubmit: (query: string, filters: string) => void;
   isLoading: boolean;
 }
 
@@ -33,13 +33,12 @@ const timeRanges = [
   { value: 'all', label: 'All Time' },
 ];
 
-const products = [
-  { value: '', label: 'All Products' },
-  { value: 'arlo-essential', label: 'Arlo Essential Security Camera' },
-  { value: 'sony-wh1000xm4', label: 'Sony WH-1000XM4' },
-  { value: 'dyson-v11', label: 'Dyson V11 Vacuum' },
-  { value: 'airpods-pro', label: 'Apple AirPods Pro' },
-  { value: 'kindle-paperwhite', label: 'Kindle Paperwhite' },
+const retrievalMethods = [
+  { value: 'similarity', label: 'Similarity Search' },
+  { value: 'similarity_filter_positive', label: 'Similarity + Positive Sentiment Filter' },
+  { value: 'similarity_filter_negative', label: 'Similarity + Negative Sentiment Filter' },
+  { value: 'keyword', label: 'Keyword Search' },
+  { value: 'hybrid_similarity_keyword', label: 'Hybrid (Similarity + Keyword)' },
 ];
 
 const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading }) => {
@@ -50,11 +49,12 @@ const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading }) => {
     industry: 'all',
     timeRange: 'month',
   });
+  const [selectedMethod, setSelectedMethod] = useState('similarity');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      onSubmit(query, filters);
+      onSubmit(query, selectedMethod);
     }
   };
 
@@ -64,7 +64,7 @@ const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading }) => {
 
   const exampleQueries = [
     "Analyze user feedback for Arlo Essential Security Camera focusing on battery life",
-    "What are the most common complaints about Sony WH-1000XM4 headphones?",
+    "Analyze user feedback regarding home security systems, focusing on experiences with customer service, contract issues, and camera performance or reliability.",
     "Compare sentiment analysis between Apple AirPods Pro and Sony WH-1000XM4",
     "Identify key themes in Kindle Paperwhite reviews from the last 3 months"
   ];
@@ -124,10 +124,10 @@ const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading }) => {
       {showAdvanced && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 pb-3 animate-fade-in">
           <Select
-            label="Product"
-            options={products}
-            value={filters.product}
-            onChange={(value) => handleFilterChange('product', value)}
+            label="retrieval method"
+            options={retrievalMethods}
+            value={selectedMethod}
+            onChange={(value) => setSelectedMethod(value)}
             fullWidth
             leftIcon={<Tag className="h-4 w-4 text-gray-400" />}
           />

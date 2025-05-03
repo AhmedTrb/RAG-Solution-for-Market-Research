@@ -18,6 +18,8 @@ Pay attention to the metadata provided for each document, including Source, Over
 
 Present your entire response as a single, valid JSON object. Do not include any introductory text, explanations, summaries, or markdown formatting outside the JSON structure.
 
+For demo purposes make the report as detailed and long as possible.
+
 CONTEXT:
 {context}
 
