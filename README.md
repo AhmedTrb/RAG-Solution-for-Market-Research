@@ -3,6 +3,7 @@
 Market Insight AI is an end-to-end AI-driven tool designed to help users extract valuable insights from the web about a given product. It leverages web scraping, NLP-based preprocessing, sentiment analysis, entity recognition, topic modeling, and a powerful RAG (Retrieval-Augmented Generation) pipeline integrated with Google’s Generative AI to generate concise and informative reports.
 
 
+[VIDEO DEMO](https://drive.google.com/file/d/12H-9aLjTp0yeGsmuI4jTxzfNB5DTjgwr/view?usp=sharing)
 
 ***
 

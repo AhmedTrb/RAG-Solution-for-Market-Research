@@ -25,7 +25,7 @@ TEMPERATURE = 0.1
 
 # --- Retrieval Configuration ---
 # Number of documents to retrieve for each method
-RETRIEVER_K = 8
+RETRIEVER_K = 10
 
 # --- Supported Retrieval Methods ---
 # List of names for the different retrieval strategies available

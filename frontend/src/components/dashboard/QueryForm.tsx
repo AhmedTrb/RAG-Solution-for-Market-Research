@@ -37,8 +37,6 @@ const retrievalMethods = [
   { value: 'similarity', label: 'Similarity Search' },
   { value: 'similarity_filter_positive', label: 'Similarity + Positive Sentiment Filter' },
   { value: 'similarity_filter_negative', label: 'Similarity + Negative Sentiment Filter' },
-  { value: 'keyword', label: 'Keyword Search' },
-  { value: 'hybrid_similarity_keyword', label: 'Hybrid (Similarity + Keyword)' },
 ];
 
 const QueryForm: React.FC<QueryFormProps> = ({ onSubmit, isLoading }) => {

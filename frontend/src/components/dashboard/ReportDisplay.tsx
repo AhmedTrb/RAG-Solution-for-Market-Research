@@ -6,6 +6,7 @@ import MetricsPanel from './MetricsPanel';
 import ThemesList from './ThemesList';
 import { FileDown, Copy, Share2 } from 'lucide-react';
 import Button from '../common/Button';
+import { jsPDF } from 'jspdf';
 import ReactMarkdown from 'react-markdown';
 interface ReportDisplayProps {
   report: Report | null;
@@ -13,7 +14,7 @@ interface ReportDisplayProps {
 
 const ReportDisplay: React.FC<ReportDisplayProps> = ({ report }) => {
   const [isCopied, setIsCopied] = useState(false);
-
+  const [isExporting, setIsExporting] = useState(false);
   if (!report) {
     return null;
   }
@@ -24,32 +25,82 @@ const ReportDisplay: React.FC<ReportDisplayProps> = ({ report }) => {
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  const handleExportPDF = () => {
-    alert('PDF export functionality would be implemented here');
-  };
-
-  const formatReportText = (text: string) => {
-    const paragraphs = text.split('\n\n');
-    
-    return paragraphs.map((paragraph, index) => {
-      if (paragraph.startsWith('# ')) {
-        return <h2 key={index} className="text-xl font-bold mt-6 mb-4">{paragraph.substring(2)}</h2>;
-      } else if (paragraph.startsWith('## ')) {
-        return <h3 key={index} className="text-lg font-bold mt-5 mb-3">{paragraph.substring(3)}</h3>;
-      } else if (paragraph.startsWith('- ')) {
-        const listItems = paragraph.split('\n- ');
-        return (
-          <ul key={index} className="list-disc pl-5 my-3 space-y-1">
-            {listItems.map((item, i) => (
-              <li key={i}>{item.replace('- ', '')}</li>
-            ))}
-          </ul>
-        );
-      } else if (paragraph.trim() !== '') {
-        return <p key={index} className="my-3 leading-relaxed">{paragraph}</p>;
+  const handleExportPDF = async () => {
+    setIsExporting(true);
+    try {
+      const doc = new jsPDF();
+      
+      // Add title
+      doc.setFontSize(20);
+      doc.text('Market Research Report', 20, 20);
+      
+      // Add timestamp
+      doc.setFontSize(10);
+      doc.text(`Generated: ${new Date().toLocaleString()}`, 20, 30);
+      
+      // Add retrieval info
+      doc.text(`Based on ${report.retrieved_document_count} documents using ${report.retrieval_method_used} search`, 20, 40);
+      
+      // Add main report content
+      doc.setFontSize(12);
+      const splitReport = doc.splitTextToSize(report.report, 170);
+      doc.text(splitReport, 20, 60);
+      
+      let yPos = 60 + (splitReport.length * 7);
+      
+      // Add Key Themes
+      doc.setFontSize(14);
+      doc.text('Key Themes:', 20, yPos);
+      doc.setFontSize(12);
+      report.key_themes.forEach((theme) => {
+        yPos += 7;
+        doc.text(`• ${theme}`, 25, yPos);
+      });
+      
+      yPos += 15;
+      
+      // Add Sentiment Analysis
+      doc.setFontSize(14);
+      doc.text('Sentiment Analysis:', 20, yPos);
+      doc.setFontSize(12);
+      yPos += 10;
+      doc.text(`Positive: ${report.sentiments.positive}`, 25, yPos);
+      yPos += 7;
+      doc.text(`Neutral: ${report.sentiments.neutral}`, 25, yPos);
+      yPos += 7;
+      doc.text(`Negative: ${report.sentiments.negative}`, 25, yPos);
+      
+      // Add Aspect Sentiments
+      if (yPos > 250) {
+        doc.addPage();
+        yPos = 20;
       }
-      return null;
-    });
+      
+      yPos += 15;
+      doc.setFontSize(14);
+      doc.text('Aspect Analysis:', 20, yPos);
+      doc.setFontSize(12);
+      
+      report.aspect_sentiments_aggregated.forEach((aspect) => {
+        if (yPos > 250) {
+          doc.addPage();
+          yPos = 20;
+        }
+        yPos += 10;
+        doc.text(`${aspect.aspect}:`, 25, yPos);
+        yPos += 7;
+        doc.text(`Summary: ${aspect.summary}`, 30, yPos);
+        yPos += 7;
+        doc.text(`Total mentions: ${aspect.total_mentions}`, 30, yPos);
+      });
+      
+      // Save the PDF
+      doc.save('market-research-report.pdf');
+    } catch (error) {
+      console.error('Error generating PDF:', error);
+    } finally {
+      setIsExporting(false);
+    }
   };
 
   return (
@@ -75,8 +126,9 @@ const ReportDisplay: React.FC<ReportDisplayProps> = ({ report }) => {
             variant="outline"
             leftIcon={<FileDown className="h-4 w-4" />}
             onClick={handleExportPDF}
+            isLoading={isExporting}
           >
-            Export
+            {isExporting ? 'Exporting...' : 'Export PDF'}
           </Button>
           <Button
             size="sm"

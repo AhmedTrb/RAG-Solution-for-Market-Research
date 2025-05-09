@@ -6,7 +6,7 @@ import Footer from '../components/layout/Footer';
 import Button from '../components/common/Button';
 import HistoryItem from '../components/history/HistoryItem';
 import { SearchHistoryItem } from '../types';
-import { getSearchHistory, clearSearchHistory, deleteSearchItem } from '../services/history';
+import { getSearchHistory, clearSearchHistory, deleteSearchItem, saveSearch } from '../services/history';
 
 const HistoryPage: React.FC = () => {
   const [history, setHistory] = useState<SearchHistoryItem[]>([]);

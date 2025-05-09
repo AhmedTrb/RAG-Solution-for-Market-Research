@@ -5,7 +5,7 @@ import Footer from '../components/layout/Footer';
 import QueryForm, { QueryFilters } from '../components/dashboard/QueryForm';
 import ReportDisplay from '../components/dashboard/ReportDisplay';
 import { Report } from '../types';
-import { generateReport, getReportById } from '../services/api';
+import { getReportById } from '../services/api';
 import { saveSearch } from '../services/history';
 import { fetchResearchReport } from '../services/ResearchService';
 
@@ -44,33 +44,16 @@ const DashboardPage: React.FC = () => {
         query: query,
         retrieval_method: retrieval_method,
       });
+      saveSearch(query, Math.random().toString(36));
       setReport(data);
     } catch (err) {
       setError('Failed to fetch research report.');
     } finally {
       setIsLoading(false);
+      
     }
   };
-  // const handleQuerySubmit = async (query: string, filters: QueryFilters) => {
-  //   setIsLoading(true);
-  //   try {
-  //     // Generate report
-  //     const reportData = await generateReport(query);
-  //     setReport(reportData);
-      
-  //     // Save to search history with a generated report ID
-  //     const reportIdForHistory = query.toLowerCase().includes('airpod') 
-  //       ? 'airpods' 
-  //       : 'default';
-      
-  //     await saveSearch(query, reportIdForHistory);
-  //   } catch (error) {
-  //     console.error('Error:', error);
-  //     // Handle error
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // };
+ 
 
   return (
     <div className="min-h-screen flex flex-col">
