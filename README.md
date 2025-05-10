@@ -60,11 +60,11 @@ Market Insight AI is an end-to-end AI-driven tool designed to help users extract
 ## Project setup :
 1. Clone repository :
     ```bash
-    git clone https://github.com/AhmedTrb/RAG-Agent-for-Market-Research
-    cd RAG-Agent-for-Market-Research
+    git clone https://github.com/AhmedTrb/RAG-Solution-for-Market-Research
+    cd RAG-Solution-for-Market-Research
     ```
 2. Add Google gemini-2.0-flash API key in the .env file 
-in backend/RAG from [Google AI for developers](https://ai.google.dev/gemini-api/docs/api-key)
+in backend/ from [Google AI for developers](https://ai.google.dev/gemini-api/docs/api-key)
     ```
     GOOGLE_API_KEY=<your api key>
     ```
