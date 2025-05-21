@@ -2,6 +2,10 @@
 
 Market Insight AI is an end-to-end AI-driven tool designed to help users extract valuable insights from the web about a given product. It leverages web scraping, NLP-based preprocessing, sentiment analysis, entity recognition, topic modeling, and a powerful RAG (Retrieval-Augmented Generation) pipeline integrated with Google’s Generative AI to generate concise and informative reports.
 
+### Value Proposition : 
+
+This solution solves the constant challenge of staying on top of rapidly shifting customer opinions and market dynamics by automatically aggregating and distilling thousands of product reviews into clear, actionable insights. Instead of spending days or weeks sifting through feedback, teams get a concise snapshot of emerging pain points, shifting sentiment trends, and untapped opportunities—enabling product managers and marketers to make faster, evidence-backed decisions. It’s also invaluable for companies looking to track product pain points for future improvements or to inform the launch of new products, helping them pinpoint how to position themselves and integrate effectively in a competitive market.
+
 
 [VIDEO DEMO](https://drive.google.com/file/d/12H-9aLjTp0yeGsmuI4jTxzfNB5DTjgwr/view?usp=sharing)
 
